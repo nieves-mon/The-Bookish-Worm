@@ -23,11 +23,14 @@ class ApplicationController < ActionController::Base
     end
 
     def edit
-
     end
 
     def update
-
+        if @book.update(book_params)
+            redirect_to @book, notice: "Book was successfully updated"
+        else
+            render :edit
+        end
     end
 
     private
