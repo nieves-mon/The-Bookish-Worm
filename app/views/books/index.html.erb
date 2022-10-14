@@ -8,6 +8,9 @@
             <%= book.title %>
             <%= link_to "View",  book_path(book.id) %>
             <%= link_to "Edit",  edit_book_path(book.id) %>
+            <%= link_to "Delete", book_path(book.id), method: :delete, data: {
+                                    confirm: "Are you sure?"
+                                    } %>
         </li>
     <% end %>
 </ul>

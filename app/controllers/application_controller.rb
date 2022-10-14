@@ -33,6 +33,11 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def destroy
+        @book.destroy
+        redirect_to books_url, notice: 'Book was successfully removed.'
+    end
+
     private
 
         def set_book
