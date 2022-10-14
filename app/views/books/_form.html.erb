@@ -18,17 +18,7 @@
   <div class="mb-3 row g-3 align-items-center">
     <div class="col-auto">
       <%= form.label :status, class: "col-form-label" %><br>
-    </div>
-
-    <div class="col-auto">
-      <%= form.select :status, [["To Be Read", "tbr"], ["Reading", "reading"], ["Read", "read"]] %>
-        <%# <option value="tbr">To Be Read</option>
-        <option value="reading">Currently Reading</option>
-        <option value="read">Read</option>
-      <% end %>
-    <%# </div> %>
-
-    <div class="col-auto">
+      <%= form.select :status, [["To Be Read", "tbr"], ["Currently Reading", "reading"], ["Read", "read"]] %>
       <% book.errors.full_messages_for(:status).each do |message| %>
         <div><%= message %></div>
       <% end %>
