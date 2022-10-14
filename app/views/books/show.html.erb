@@ -3,8 +3,8 @@
 <h1><%= @book.title %></h1>
 <h3>By: <%= @book.author %></h3>
 
-<%= link_to "Edit",  edit_book_path(@book.id) %>
-<%= link_to "Delete", book_path(@book.id), method: :delete, data: {
+<%= link_to "Edit",  edit_book_path(@book.id), class: "btn btn-primary" %>
+<%= link_to "Delete", book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
                         confirm: "Are you sure?"
                         } %>
 
@@ -22,5 +22,16 @@
 </div>
 
 <div>
-    <h6>Rating: <%= @book.rating ? "#{@book.rating}/5" : "Not rated yet" %></h6>
+    <h6>Rating:
+        <%= if !@book.rating
+                "Not rated yet"
+            else @book.rating.to_i.times do %>
+                <i class="bi bi-star-fill"></i>
+            <% end %>
+            <% @book.blank_stars.times do %>
+                <i class="bi bi-star"></i>
+            <% end %>
+            <%= nil %>
+        <% end %>
+    </h6>
 </div>
