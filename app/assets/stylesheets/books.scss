@@ -41,8 +41,12 @@ h1 {
 **/
 .page-label {
     text-align: center;
-    margin: 1rem auto 2rem;
+    margin: 2rem auto;
     width: fit-content;
+
+    h1 {
+        font-size: 4rem;
+    }
 }
 
 /**
@@ -50,6 +54,10 @@ h1 {
 **/
 .book-list {
     margin: 0 6rem;
+
+    .col-sm-3 {
+        margin: 1rem 0;
+    }
 }
 
 .card-title {
