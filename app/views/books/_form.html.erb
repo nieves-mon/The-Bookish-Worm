@@ -24,25 +24,9 @@
   </div>
 
   <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-    <% book.errors.full_messages_for(:description).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
     <%= form.label :rating %><br>
     <%= form.select :rating, [["--Select--", nil], ["0/5", 0], ["1/5", 01], ["2/5", 2], ["3/5", 3], ["4/5", 4], ["5/5", 5]] %><br>
     <% book.errors.full_messages_for(:rating).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :review %><br>
-    <%= form.text_area :review %>
-    <% book.errors.full_messages_for(:review).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
