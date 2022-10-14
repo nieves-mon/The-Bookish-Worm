@@ -7,16 +7,18 @@
                         } %>
 
 <div>
-    <h4>Synopsis</h4>
-    <p><%= @book.description %></p>
+    <div>Status: <%=
+        case @book.status
+            when "read"
+                "Read"
+            when "reading"
+                "Currently Reading"
+            when "tbr"
+                "To Be Read"
+        end
+    %></div>
 </div>
 
 <div>
-    <div>Status: <%= @book.status %></div>
-</div>
-
-<div>
-    <h6>Review</h6>
-    <p>Rating: <%= @book.rating ? "#{@book.rating}/5" : "Not rated yet" %></p>
-    <p><%= !@book.review.empty? ? @book.review : "No review" %></p>
+    <h6>Rating: <%= @book.rating ? "#{@book.rating}/5" : "Not rated yet" %></h6>
 </div>
