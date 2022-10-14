@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_10_13_115118) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "cover_url"
   end
 
 end
