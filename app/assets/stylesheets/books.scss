@@ -53,10 +53,15 @@ h1 {
     =========== Book Cards ===========
 **/
 .book-list {
-    margin: 0 6rem;
+    margin: 0 3rem;
 
-    .col-sm-3 {
+    .col-sm {
         margin: 1rem 0;
+        min-width: 30ch;
+    }
+
+    .card {
+        width: 100%;
     }
 }
 
