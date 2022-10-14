@@ -60,3 +60,26 @@ h1 {
 .card-text {
     font-style: italic;
 }
+
+/**
+    =========== Form ===========
+**/
+.book-form {
+    margin: 0 auto;
+    max-width: 40ch;
+
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+.mb-3 {
+    select {
+        width: 100%;
+    }
+
+    select:hover,
+    select option:hover {
+        cursor: pointer;
+    }
+}

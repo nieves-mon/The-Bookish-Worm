@@ -1,37 +1,64 @@
-<%= form_with model: @book do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+<%= form_with model: @book, class: "book-form" do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %><br>
+    <%= form.text_field :title, class: "form-control" %>
     <% book.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :author %><br>
-    <%= form.text_field :author %>
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %><br>
+    <%= form.text_field :author, class: "form-control" %>
     <% book.errors.full_messages_for(:author).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, [['Read', 'read'], ['Currently Reading', 'reading'], ['To Be Read', 'tbr']] %><br>
-    <% book.errors.full_messages_for(:status).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+  <div class="mb-3 row g-3 align-items-center">
+    <div class="col-auto">
+      <%= form.label :status, class: "col-form-label" %><br>
+    </div>
+
+    <div class="col-auto">
+      <%= form.select :status do %>
+        <option value="tbr" selected >To Be Read</option>
+        <option value="reading">Currently Reading</option>
+        <option value="read">Read</option>
+      <% end %>
+    </div>
+
+    <div class="col-auto">
+      <% book.errors.full_messages_for(:status).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mb-3 row g-3 align-items-center">
+    <div class="col-auto">
+      <%= form.label :rating, class: "col-form-label" %><br>
+    </div>
+
+    <div class="col-auto">
+      <%= form.select :rating do %></div>
+        <option value="nil" selected>Select</option>
+        <option value=1>1/5</option>
+        <option value=2>2/5</option>
+        <option value=3>3/5</option>
+        <option value=4>4/5</option>
+        <option value=5>5/5</option>
+      <% end %>
+    </div>
+
+    <div class="col-auto">
+      <% book.errors.full_messages_for(:rating).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
   </div>
 
   <div>
-    <%= form.label :rating %><br>
-    <%= form.select :rating, [["--Select--", nil], ["0/5", 0], ["1/5", 01], ["2/5", 2], ["3/5", 3], ["4/5", 4], ["5/5", 5]] %><br>
-    <% book.errors.full_messages_for(:rating).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.submit "Add Book" %>
+    <%= form.submit "Add Book", class: "btn btn-primary" %>
   </div>
 <% end %>
