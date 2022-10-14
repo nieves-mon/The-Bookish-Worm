@@ -12,12 +12,16 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= book.title %></h5>
                     <p class="card-text"><%= book.author %></p>
-                    <%= link_to "View",  book_path(book.id), class: "btn btn-secondary" %>
-                    <%= link_to "Edit",  edit_book_path(book.id), class: "btn btn-secondary" %>
+                    <%= link_to book_path(book.id), class: "btn btn-secondary" do %>
+                        <i class="bi bi-eye-fill"></i> View
+                    <% end %>
+                    <%= link_to edit_book_path(book.id), class: "btn btn-secondary" do %>
+                        <i class="bi bi-pencil-fill"></i> Edit
+                    <% end %>
                     <%= link_to book_path(book.id), class: "btn btn-secondary", method: :delete, data: {
                                                 confirm: "Are you sure?"
                                                 } do %>
-                        <i class="bi bi-trash-fill"></i>
+                        <i class="bi bi-trash-fill"></i> Delete
                     <% end %>
                 </div>
             </div>
