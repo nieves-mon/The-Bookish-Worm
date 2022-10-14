@@ -91,3 +91,24 @@ h1 {
         cursor: pointer;
     }
 }
+
+/**
+    =========== Show Book ===========
+**/
+.show-book {
+    margin: 1rem auto;
+    width: fit-content;
+
+    .book-cover,
+    .book-details {
+        max-height: 80vh;
+    }
+}
+
+.book-cover {
+    max-width: 40ch;
+
+    img {
+        width: 100%;
+    }
+}

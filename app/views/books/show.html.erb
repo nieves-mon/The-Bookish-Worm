@@ -1,37 +1,55 @@
 <%= render "header" %>
 
-<h1><%= @book.title %></h1>
-<h3>By: <%= @book.author %></h3>
-
-<%= link_to "Edit",  edit_book_path(@book.id), class: "btn btn-primary" %>
-<%= link_to "Delete", book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
-                        confirm: "Are you sure?"
-                        } %>
-
-<div>
-    <div>Status: <%=
-        case @book.status
-            when "read"
-                "Read"
-            when "reading"
-                "Currently Reading"
-            when "tbr"
-                "To Be Read"
-        end
-    %></div>
-</div>
-
-<div>
-    <h6>Rating:
-        <%= if !@book.rating
-                "Not rated yet"
-            else @book.rating.to_i.times do %>
-                <i class="bi bi-star-fill"></i>
+<div class="container show-book">
+    <div class="row">
+        <div class="col book-cover">
+            <%= if !@book.cover_url; 1.times do %>
+                    <div class="no-cover">No Book Cover</div>
+                <% end %>
+                <% nil %>
             <% end %>
-            <% @book.blank_stars.times do %>
-                <i class="bi bi-star"></i>
+            <%= if @book.cover_url; 1.times do%>
+                    <%= image_tag @book.cover_url%>
+                <% end %>
+                <% nil %>
             <% end %>
-            <%= nil %>
-        <% end %>
-    </h6>
+        </div>
+        <div class="col book-details">
+            <h1><%= @book.title %></h1>
+            <h3>By: <%= @book.author %></h3>
+
+            <%= link_to "Edit",  edit_book_path(@book.id), class: "btn btn-primary" %>
+            <%= link_to "Delete", book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
+                                    confirm: "Are you sure?"
+                                    } %>
+
+            <div>
+                <div>Status: <%=
+                    case @book.status
+                        when "read"
+                            "Read"
+                        when "reading"
+                            "Currently Reading"
+                        when "tbr"
+                            "To Be Read"
+                    end
+                %></div>
+            </div>
+
+            <div>
+                <h6>Rating:
+                    <%= if !@book.rating
+                            "Not rated yet"
+                        else @book.rating.to_i.times do %>
+                            <i class="bi bi-star-fill"></i>
+                        <% end %>
+                        <% @book.blank_stars.times do %>
+                            <i class="bi bi-star"></i>
+                        <% end %>
+                        <%= nil %>
+                    <% end %>
+                </h6>
+            </div>
+        </div>
+    </div>
 </div>
