@@ -21,12 +21,12 @@
     </div>
 
     <div class="col-auto">
-      <%= form.select :status do %>
-        <option value="tbr" selected >To Be Read</option>
+      <%= form.select :status, [["To Be Read", "tbr"], ["Reading", "reading"], ["Read", "read"]] %>
+        <%# <option value="tbr">To Be Read</option>
         <option value="reading">Currently Reading</option>
         <option value="read">Read</option>
       <% end %>
-    </div>
+    <%# </div> %>
 
     <div class="col-auto">
       <% book.errors.full_messages_for(:status).each do |message| %>
@@ -41,14 +41,7 @@
     </div>
 
     <div class="col-auto">
-      <%= form.select :rating do %></div>
-        <option value="nil" selected>Select</option>
-        <option value=1>1/5</option>
-        <option value=2>2/5</option>
-        <option value=3>3/5</option>
-        <option value=4>4/5</option>
-        <option value=5>5/5</option>
-      <% end %>
+      <%= form.select :rating, [["Select", nil], ["1/5", 1], ["2/5", 2], ["3/5", 3], ["4/5", 4], ["5/5", 5]] %>
     </div>
 
     <div class="col-auto">
@@ -56,6 +49,14 @@
         <div><%= message %></div>
       <% end %>
     </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cover_url, class: "form-label" %><br>
+    <%= form.text_field :cover_url, class: "form-control" %>
+    <% book.errors.full_messages_for(:cover_url).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
