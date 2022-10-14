@@ -3,12 +3,11 @@
 <div class="container show-book">
     <div class="row">
         <div class="col book-cover">
-            <%= if @book.cover_url.empty?;1.times do %>
+            <%= if !@book.cover_url || @book.cover_url.empty?;1.times do %>
                     <div class="no-cover">No Book Cover</div>
                 <% end %>
-                <% nil %>
-            <% end %>
-            <%= if !@book.cover_url.empty?; 1.times do%>
+                <% nil
+            elsif !@book.cover_url.empty?; 1.times do%>
                     <%= image_tag @book.cover_url%>
                 <% end %>
                 <% nil %>
@@ -19,10 +18,14 @@
             <h3 class="author">By: <%= @book.author %></h3>
 
             <div class="book-options">
-                <%= link_to "Edit",  edit_book_path(@book.id), class: "btn btn-primary" %>
-                <%= link_to "Delete", book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
+                <%= link_to edit_book_path(@book.id), class: "btn btn-primary" do %>
+                    <i class="bi bi-pencil-fill"></i> Edit
+                <% end %>
+                <%= link_to book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
                                         confirm: "Are you sure?"
-                                        } %>
+                                        } do %>
+                    <i class="bi bi-trash-fill"></i> Delete
+                <% end %>
             </div>
 
             <div class="status">
