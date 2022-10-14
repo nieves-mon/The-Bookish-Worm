@@ -1,0 +1,53 @@
+<%= form_with model: @book do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% book.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+    <% book.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select :status, [['Read', 'read'], ['Currently Reading', 'reading'], ['To Be Read', 'tbr']] %><br>
+    <% book.errors.full_messages_for(:status).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+    <% book.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :rating %><br>
+    <%= form.select :rating, [["--Select--", nil], ["0/5", 0], ["1/5", 01], ["2/5", 2], ["3/5", 3], ["4/5", 4], ["5/5", 5]] %><br>
+    <% book.errors.full_messages_for(:rating).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :review %><br>
+    <%= form.text_area :review %>
+    <% book.errors.full_messages_for(:review).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "Add Book" %>
+  </div>
+<% end %>
