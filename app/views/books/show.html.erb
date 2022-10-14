@@ -12,6 +12,6 @@
 
 <div>
     <h6>Review</h6>
-    <p>Rating: <%= @book.rating %>/5</p>
-    <p><%= @book.review %>
+    <p>Rating: <%= @book.rating ? "#{@book.rating}/5" : "Not rated yet" %></p>
+    <p><%= !@book.review.empty? ? @book.review : "No review" %></p>
 </div>
