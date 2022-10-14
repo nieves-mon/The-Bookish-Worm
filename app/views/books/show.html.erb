@@ -3,28 +3,30 @@
 <div class="container show-book">
     <div class="row">
         <div class="col book-cover">
-            <%= if !@book.cover_url; 1.times do %>
+            <%= if @book.cover_url.empty?;1.times do %>
                     <div class="no-cover">No Book Cover</div>
                 <% end %>
                 <% nil %>
             <% end %>
-            <%= if @book.cover_url; 1.times do%>
+            <%= if !@book.cover_url.empty?; 1.times do%>
                     <%= image_tag @book.cover_url%>
                 <% end %>
                 <% nil %>
             <% end %>
         </div>
         <div class="col book-details">
-            <h1><%= @book.title %></h1>
-            <h3>By: <%= @book.author %></h3>
+            <h1 class="title"><%= @book.title %></h1>
+            <h3 class="author">By: <%= @book.author %></h3>
 
-            <%= link_to "Edit",  edit_book_path(@book.id), class: "btn btn-primary" %>
-            <%= link_to "Delete", book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
-                                    confirm: "Are you sure?"
-                                    } %>
+            <div class="book-options">
+                <%= link_to "Edit",  edit_book_path(@book.id), class: "btn btn-primary" %>
+                <%= link_to "Delete", book_path(@book.id), class: "btn btn-primary", method: :delete, data: {
+                                        confirm: "Are you sure?"
+                                        } %>
+            </div>
 
-            <div>
-                <div>Status: <%=
+            <div class="status">
+                <p>Status: <%=
                     case @book.status
                         when "read"
                             "Read"
@@ -33,11 +35,11 @@
                         when "tbr"
                             "To Be Read"
                     end
-                %></div>
+                %></p>
             </div>
 
-            <div>
-                <h6>Rating:
+            <div class="rating">
+                <p>Rating:
                     <%= if !@book.rating
                             "Not rated yet"
                         else @book.rating.to_i.times do %>
@@ -48,7 +50,7 @@
                         <% end %>
                         <%= nil %>
                     <% end %>
-                </h6>
+                </p>
             </div>
         </div>
     </div>
