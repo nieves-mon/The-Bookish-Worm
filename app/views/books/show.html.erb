@@ -54,9 +54,6 @@
                         else @book.rating.to_i.times do %>
                             <i class="bi bi-star-fill"></i>
                         <% end %>
-                        <% @book.blank_stars.times do %>
-                            <i class="bi bi-star"></i>
-                        <% end %>
                         <%= nil %>
                     <% end %>
                 </p>
