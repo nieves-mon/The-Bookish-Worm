@@ -1,5 +1,11 @@
 <%= render "header" %>
 
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
 <div class="container show-book">
     <div class="row">
         <div class="col book-cover">
