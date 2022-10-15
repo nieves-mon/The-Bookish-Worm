@@ -3,8 +3,4 @@ class Book < ApplicationRecord
     validates :author, presence: true
     validates :status, presence:true
     validates :rating, numericality: {less_than_or_equal_to: 5, more_than_or_equal_to: 1}, allow_nil: true
-
-    def blank_stars
-        5 - rating.to_i
-    end
 end
